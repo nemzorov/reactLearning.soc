@@ -10,6 +10,6 @@
     border-radius: 4px;
 }
 
-.link:hover {
+.link a:hover {
     color: #e1cec3;
 }
