@@ -1,7 +1,6 @@
-import React from "react";
 import style from "./Main.module.css"
 
-const Main = (props) => {
+const Main = () => {
     return (
         <div className={style.main}>Эта самая главная страница</div>
     )

@@ -13,3 +13,7 @@
 .link a:hover {
     color: #e1cec3;
 }
+
+.link a.active {
+    color: #e1cec3;
+}
