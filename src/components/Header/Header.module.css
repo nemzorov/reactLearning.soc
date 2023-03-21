@@ -1,0 +1,19 @@
+.wrapp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 75px;
+    height: 75px;
+    border: 2px solid #0f2bb6;
+}
+
+.name {
+    text-transform: uppercase;
+    font-size: 1.25em;
+}
