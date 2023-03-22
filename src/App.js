@@ -9,18 +9,21 @@ import Settings from "./components/Settings/Settings";
 import Main from "./components/Main/Main";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
       <div className="container">
         <div className="App">
           <Header />
-          <Navbar />
+          <Navbar data={props.state.navbar} />
           <div className="wrapp">
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/message" element={<Messages />} />
+              <Route
+                path="/message/*"
+                element={<Messages data={props.state.messagesPage} />}
+              />
               <Route path="/news" element={<News />} />
               <Route path="/music" element={<Music />} />
               <Route path="/settings" element={<Settings />} />

@@ -1,3 +1,51 @@
 .wrap {
     color: #1d5795;
+    display: grid;
+    grid-template-columns: 2fr 1px 5fr;
+    gap: 30px;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid #5084cd;
+}
+
+.wrap>span {
+    background: #5084cd;
+}
+
+.dialogs {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.dialog a {
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid #5084cd;
+}
+
+.dialog a:hover {
+    background: #5084cd;
+    color: #fff;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: baseline;
+}
+
+.message {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1px solid #5084cd;
+}
+
+.my {
+    align-self: flex-end;
+    text-align: right;
 }
