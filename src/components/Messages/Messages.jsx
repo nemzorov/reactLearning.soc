@@ -6,13 +6,22 @@ import Message from './Message/Message';
 const Messages = (props) => {
     return (
         <div className={style.wrap}>
-            <ul className={style.dialogs}>
-                {props.data.dialogs.map(dialog => <Dialog className={style.dialog} name={dialog.name} key={dialog.id} id={dialog.id} />)}
-            </ul>
+            <div>
+                <ul className={style.dialogs}>
+                    {props.data.dialogs.map(dialog => <Dialog className={style.dialog} name={dialog.name} key={dialog.id} id={dialog.id} />)}
+                </ul>
+            </div>
             <span></span>
-            <ul className={style.messages}>
-                {props.data.messages.map(message => <Message key={message.id} className={`${style.message} ${message.my ? style.my : ''}`} message={message.text}/>)}
-            </ul>
+            <div>
+                <ul className={style.messages}>
+                    {props.data.messages.map(message => <Message key={message.id} className={`${style.message} ${message.my ? style.my : ''}`} message={message.text}/>)}
+                </ul>
+                <div className={style.send}>
+                    <textarea></textarea>
+                    <button>Отправить</button>
+                </div>
+                
+            </div>
         </div>
     )
 }   
