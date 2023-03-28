@@ -1,3 +1,5 @@
+import { renderDOM } from "../render";
+
 const state = {
   navbar: [
     { url: "/profile", name: "Моя страница", id: 1 },
@@ -25,6 +27,16 @@ const state = {
       { id: "6", name: "Игорь" },
     ],
   },
+};
+
+let thisId = 9;
+export const addMessage = (message) => {
+  thisId++;
+  state.messagesPage.messages.push({
+    id: thisId,
+    text: message,
+  });
+  renderDOM(state);
 };
 
 export default state;
