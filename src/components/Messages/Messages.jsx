@@ -27,8 +27,8 @@ const Messages = (props) => {
                     {props.data.messages.map(message => <Message key={message.id} className={`${style.message} ${message.my ? style.my : ''}`} message={message.text}/>)}
                 </ul>
                 <div className={style.send}>
-                    <textarea ref={newMessage}></textarea>
-                    <button onClick={addMessage}>Отправить</button>
+                    <textarea className="textarea" ref={newMessage}></textarea>
+                    <button className="button" onClick={addMessage}>Отправить</button>
                 </div>
                 
             </div>
