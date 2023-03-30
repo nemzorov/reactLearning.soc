@@ -19,7 +19,12 @@ function App(props) {
           <div className="wrapp">
             <Routes>
               <Route path="/" element={<Main />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route
+                path="/profile"
+                element={
+                  <Profile addPost={props.addPost} data={props.state.profile} />
+                }
+              />
               <Route
                 path="/message/*"
                 element={

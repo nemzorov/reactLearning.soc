@@ -1,7 +1,11 @@
-import React from "react";
+
+import Send from '../elements/send/Send';
+import Post from './Posts/Post';
 import style from './Profile.module.css'
 
-const Profile = () => {
+const Profile = (props) => {
+    let posts = props.data.posts;
+
     return (
         <div className={style.wrap}>
             <div className={style.left}>
@@ -10,12 +14,17 @@ const Profile = () => {
                 </div>
             </div>
             <div className={style.right}>
-                <div className={style.name}>Homer Simpsons</div>
-                <div className={style.age}>
-                    <span>25</span>
-                    <span>лет</span>
+                <div className={style.name}>Гомер Симпсон</div>
+
+                <div className={style.wall}>
+
+                    <Send btnName="Опубликовать" style={style.send} addMessage={props.addPost} />
+
+                    <div className={style.posts}>
+                        {posts.map(post => <Post style={style.post} text={post.text} date={post.date} />)}
+                    </div>
                 </div>
-                <div className={style.about}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos mollitia aliquid quia sapiente ea dolores voluptates amet earum asperiores, ipsam corrupti perferendis delectus accusantium doloribus aspernatur est itaque rem cum.</div>
+
             </div>
         </div>
     )
