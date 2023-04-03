@@ -7,6 +7,7 @@ const Profile = (props) => {
     let posts = props.data.posts;
 
     return (
+
         <div className={style.wrap}>
             <div className={style.left}>
                 <div className={style.image}>
@@ -18,7 +19,7 @@ const Profile = (props) => {
 
                 <div className={style.wall}>
 
-                    <Send btnName="Опубликовать" style={style.send} addMessage={props.addPost} />
+                    <Send btnName="Опубликовать" changeTextarea={props.changeTextarea} style={style.send} addMessage={props.addPost} textareaVal={props.data.textareaVal} />
 
                     <div className={style.posts}>
                         {posts.map(post => <Post style={style.post} text={post.text} date={post.date} />)}

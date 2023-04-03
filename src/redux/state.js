@@ -1,7 +1,8 @@
-import { renderDOM } from "../render";
+let renderDOM;
 
 const state = {
   profile: {
+    textareaVal: "Какой то текст",
     posts: [
       {
         date: "01.02.2023",
@@ -32,6 +33,7 @@ const state = {
   ],
 
   messagesPage: {
+    textareaVal: "Текст сообщения",
     messages: [
       { id: "1", text: "Привет", my: true },
       { id: "2", text: "Привет" },
@@ -53,23 +55,41 @@ const state = {
 
 let thisId = 99;
 
-export const addMessage = (message) => {
+export const addMessage = () => {
   thisId++;
   state.messagesPage.messages.push({
     id: thisId,
-    text: message,
+    text: state.messagesPage.textareaVal,
   });
+  state.messagesPage.textareaVal = "";
   renderDOM(state);
 };
 
-export const addPost = (message, date) => {
+export const addPost = () => {
   thisId++;
+  const now = new Date().toLocaleString();
+  const date = now;
   state.profile.posts.push({
     id: thisId,
-    text: message,
+    text: state.profile.textareaVal,
     date: date,
   });
+  state.profile.textareaVal = "";
   renderDOM(state);
+};
+
+export const changeTextarea = (text) => {
+  state.profile.textareaVal = text;
+  renderDOM(state);
+};
+
+export const changeTextarea2 = (text) => {
+  state.messagesPage.textareaVal = text;
+  renderDOM(state);
+};
+
+export const subscribe = (observer) => {
+  renderDOM = observer;
 };
 
 export default state;

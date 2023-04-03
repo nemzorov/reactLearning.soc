@@ -19,7 +19,7 @@ const Messages = (props) => {
                     {props.data.messages.map(message => <Message key={message.id} className={`${style.message} ${message.my ? style.my : ''}`} message={message.text} />)}
                 </ul>
 
-                <Send btnName="Отправить" style={style.send} addMessage={props.addMessage} />
+                <Send textareaVal={props.data.textareaVal} changeTextarea={props.changeTextarea} btnName="Отправить" style={style.send} addMessage={props.addMessage} />
             </div>
         </div>
     )

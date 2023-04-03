@@ -5,21 +5,21 @@ import React from 'react';
 
 const Send = (props) => {
     const newMessage = React.createRef();
-    const addMessage = () => {
-        const now = new Date().toLocaleString();
-        const text = newMessage.current.value;
-        const date = now;
-        if (text) {
-            props.addMessage(text, date);
-            newMessage.current.value = '';
-        }
 
+    const addMessage = () => {
+        props.addMessage();
     }
+
+    const changeMessage = () => {
+        const text = newMessage.current.value;
+        props.changeTextarea(text);
+    }
+
 
 
     return (
         <div className={props.style}>
-            <textarea className={style.textarea} ref={newMessage} ></textarea>
+            <textarea className={style.textarea} onChange={changeMessage} ref={newMessage} value={props.textareaVal} />
             <button className={style.button} onClick={addMessage} >{props.btnName}</button>
         </div>
     )

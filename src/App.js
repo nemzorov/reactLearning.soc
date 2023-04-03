@@ -22,7 +22,11 @@ function App(props) {
               <Route
                 path="/profile"
                 element={
-                  <Profile addPost={props.addPost} data={props.state.profile} />
+                  <Profile
+                    changeTextarea={props.changeTextarea}
+                    addPost={props.addPost}
+                    data={props.state.profile}
+                  />
                 }
               />
               <Route
@@ -31,6 +35,7 @@ function App(props) {
                   <Messages
                     data={props.state.messagesPage}
                     addMessage={props.addMessage}
+                    changeTextarea={props.changeTextarea2}
                   />
                 }
               />
