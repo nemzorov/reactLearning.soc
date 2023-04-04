@@ -19,7 +19,7 @@ const Profile = (props) => {
 
                 <div className={style.wall}>
 
-                    <Send btnName="Опубликовать" changeTextarea={props.changeTextarea} style={style.send} addMessage={props.addPost} textareaVal={props.data.textareaVal} />
+                    <Send actionAdd="ADD-POST" textareaVal={props.textareaVal} dispath={props.dispath} btnName="Опубликовать" style={style.send} />
 
                     <div className={style.posts}>
                         {posts.map(post => <Post style={style.post} text={post.text} date={post.date} />)}

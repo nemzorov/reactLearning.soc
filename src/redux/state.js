@@ -4,10 +4,10 @@ const store = {
   _renderDOM() {
     console.log("renderDOM");
   },
-
   _state: {
+    textareaVal: "Введите сообщение",
+
     profile: {
-      textareaVal: "Какой то текст",
       posts: [
         {
           date: "01.02.2023",
@@ -38,7 +38,6 @@ const store = {
     ],
 
     messagesPage: {
-      textareaVal: "Текст сообщения",
       messages: [
         { id: "1", text: "Привет", my: true },
         { id: "2", text: "Привет" },
@@ -61,43 +60,35 @@ const store = {
   getState() {
     return this._state;
   },
-
-  addMessage() {
-    this._thisId++;
-    this._state.messagesPage.messages.push({
-      id: this._thisId,
-      text: this._state.messagesPage.textareaVal,
-    });
-    this._state.messagesPage.textareaVal = "";
-    this._renderDOM(this._state);
-  },
-
-  addPost() {
-    this._thisId++;
-    const now = new Date().toLocaleString();
-    const date = now;
-    const newPost = {
-      id: this._thisId,
-      text: this._state.profile.textareaVal,
-      date: date,
-    };
-    this._state.profile.posts.push(newPost);
-    this._state.profile.textareaVal = "";
-    this._renderDOM(this._state);
-  },
-
-  changeTextarea(text) {
-    this._state.profile.textareaVal = text;
-    this._renderDOM(this._state);
-  },
-
-  changeTextarea2(text) {
-    this._state.messagesPage.textareaVal = text;
-    this._renderDOM(this._state);
-  },
-
   subscribe(observer) {
     this._renderDOM = observer;
+  },
+
+  dispath(action) {
+    if (action.type === "ADD-MESSAGE") {
+      this._thisId++;
+      this._state.messagesPage.messages.push({
+        id: this._thisId,
+        text: this._state.textareaVal,
+      });
+      this._state.textareaVal = "";
+      this._renderDOM(this._state);
+    } else if (action.type === "ADD-POST") {
+      this._thisId++;
+      const now = new Date().toLocaleString();
+      const date = now;
+      const newPost = {
+        id: this._thisId,
+        text: this._state.textareaVal,
+        date: date,
+      };
+      this._state.profile.posts.push(newPost);
+      this._state.textareaVal = "";
+      this._renderDOM(this._state);
+    } else if (action.type === "CHANGE-TEXTAREA") {
+      this._state.textareaVal = action.text;
+      this._renderDOM(this._state);
+    }
   },
 };
 

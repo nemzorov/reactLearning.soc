@@ -9,13 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 export const renderDOM = () => {
   root.render(
     <React.StrictMode>
-      <App
-        state={store.getState()}
-        changeTextarea={store.changeTextarea.bind(store)}
-        changeTextarea2={store.changeTextarea2.bind(store)}
-        addMessage={store.addMessage.bind(store)}
-        addPost={store.addPost.bind(store)}
-      />
+      <App state={store.getState()} dispath={store.dispath.bind(store)} />
     </React.StrictMode>
   );
 };

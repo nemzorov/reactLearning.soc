@@ -7,12 +7,12 @@ const Send = (props) => {
     const newMessage = React.createRef();
 
     const addMessage = () => {
-        props.addMessage();
+        props.dispath({ type: props.actionAdd });
     }
 
     const changeMessage = () => {
         const text = newMessage.current.value;
-        props.changeTextarea(text);
+        props.dispath({ type: 'CHANGE-TEXTAREA', text: text });
     }
 
 

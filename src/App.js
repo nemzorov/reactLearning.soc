@@ -23,9 +23,9 @@ function App(props) {
                 path="/profile"
                 element={
                   <Profile
-                    changeTextarea={props.changeTextarea}
-                    addPost={props.addPost}
                     data={props.state.profile}
+                    dispath={props.dispath}
+                    textareaVal={props.state.textareaVal}
                   />
                 }
               />
@@ -34,8 +34,8 @@ function App(props) {
                 element={
                   <Messages
                     data={props.state.messagesPage}
-                    addMessage={props.addMessage}
-                    changeTextarea={props.changeTextarea2}
+                    dispath={props.dispath}
+                    textareaVal={props.state.textareaVal}
                   />
                 }
               />
