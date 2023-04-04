@@ -1,30 +1,24 @@
-import state, { subscribe } from "./redux/state";
+import store from "./redux/state";
 import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import {
-  addMessage,
-  changeTextarea,
-  addPost,
-  changeTextarea2,
-} from "./redux/state";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-export const renderDOM = (state) => {
+export const renderDOM = () => {
   root.render(
     <React.StrictMode>
       <App
-        state={state}
-        changeTextarea={changeTextarea}
-        changeTextarea2={changeTextarea2}
-        addMessage={addMessage}
-        addPost={addPost}
+        state={store.getState()}
+        changeTextarea={store.changeTextarea.bind(store)}
+        changeTextarea2={store.changeTextarea2.bind(store)}
+        addMessage={store.addMessage.bind(store)}
+        addPost={store.addPost.bind(store)}
       />
     </React.StrictMode>
   );
 };
 
-renderDOM(state);
-subscribe(renderDOM);
+renderDOM(store.getState());
+store.subscribe(renderDOM);
