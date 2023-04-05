@@ -2,6 +2,7 @@ import style from './Message.module.css'
 import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
 import Send from '../elements/send/Send';
+import { addMessageActionCreator } from '../../redux/state';
 
 
 const Messages = (props) => {
@@ -19,7 +20,7 @@ const Messages = (props) => {
                     {props.data.messages.map(message => <Message key={message.id} className={`${style.message} ${message.my ? style.my : ''}`} message={message.text} />)}
                 </ul>
 
-                <Send actionAdd="ADD-MESSAGE" textareaVal={props.textareaVal} dispath={props.dispath} btnName="Отправить" style={style.send} />
+                <Send actionAdd={addMessageActionCreator} textareaVal={props.textareaVal} dispath={props.dispath} btnName="Отправить" style={style.send} />
             </div>
         </div>
     )

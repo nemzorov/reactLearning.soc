@@ -93,3 +93,22 @@ const store = {
 };
 
 export default store;
+
+//
+//
+//
+const CHANGE_TEXTAREA = "CHANGE-TEXTAREA";
+const ADD_POST = "ADD-POST";
+const ADD_MESSAGE = "ADD-MESSAGE";
+
+export const changeMessageActionCreator = (text) => {
+  return { type: CHANGE_TEXTAREA, text: text };
+};
+
+export const addPostActionCreator = () => {
+  return { type: ADD_POST };
+};
+
+export const addMessageActionCreator = () => {
+  return { type: ADD_MESSAGE };
+};

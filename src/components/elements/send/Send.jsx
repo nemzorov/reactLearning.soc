@@ -1,18 +1,17 @@
 import style from './Send.module.css'
 import React from 'react';
-
-
+import { changeMessageActionCreator } from '../../../redux/state';
 
 const Send = (props) => {
     const newMessage = React.createRef();
 
     const addMessage = () => {
-        props.dispath({ type: props.actionAdd });
+        props.dispath(props.actionAdd());
     }
 
     const changeMessage = () => {
         const text = newMessage.current.value;
-        props.dispath({ type: 'CHANGE-TEXTAREA', text: text });
+        props.dispath(changeMessageActionCreator(text));
     }
 
 
