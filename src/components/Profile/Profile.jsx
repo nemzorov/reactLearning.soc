@@ -2,7 +2,8 @@
 import Send from '../elements/send/Send';
 import Post from './Posts/Post';
 import style from './Profile.module.css'
-import { addPostActionCreator } from '../../redux/state';
+import { addPostActionCreator, changePostActionCreator } from '../../redux/profile-reducer';
+
 
 
 const Profile = (props) => {
@@ -21,7 +22,7 @@ const Profile = (props) => {
 
                 <div className={style.wall}>
 
-                    <Send actionAdd={addPostActionCreator} textareaVal={props.textareaVal} dispath={props.dispath} btnName="Опубликовать" style={style.send} />
+                    <Send changeActionCreator={changePostActionCreator} actionAdd={addPostActionCreator} textareaVal={props.textareaVal} dispath={props.dispath} btnName="Опубликовать" style={style.send} />
 
                     <div className={style.posts}>
                         {posts.map(post => <Post style={style.post} text={post.text} date={post.date} />)}

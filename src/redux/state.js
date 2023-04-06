@@ -1,13 +1,21 @@
-const store = {
-  _thisId: 99,
+import messageReducer from "./message-reducer";
+import profileReducer from "./profile-reducer";
+import navbarReducer from "./navbar-reducer";
 
-  _renderDOM() {
-    console.log("renderDOM");
-  },
+const store = {
   _state: {
-    textareaVal: "Введите сообщение",
+    navbar: [
+      { url: "/profile", name: "Моя страница", id: 1 },
+      { url: "/friends", name: "Друзья", id: 12 },
+      { url: "/message", name: "Сообщения", id: 2 },
+      { url: "/news", name: "Новости", id: 3 },
+      { url: "/music", name: "Музыка", id: 4 },
+      { url: "/settings", name: "Настройки", id: 5 },
+    ],
 
     profile: {
+      textareaVal: "Есть что рассказать?",
+      thisId: 99,
       posts: [
         {
           date: "01.02.2023",
@@ -28,16 +36,9 @@ const store = {
       ],
     },
 
-    navbar: [
-      { url: "/profile", name: "Моя страница", id: 1 },
-      { url: "/friends", name: "Друзья", id: 12 },
-      { url: "/message", name: "Сообщения", id: 2 },
-      { url: "/news", name: "Новости", id: 3 },
-      { url: "/music", name: "Музыка", id: 4 },
-      { url: "/settings", name: "Настройки", id: 5 },
-    ],
-
     messagesPage: {
+      textareaVal: "Введите сообщение",
+      thisId: 99,
       messages: [
         { id: "1", text: "Привет", my: true },
         { id: "2", text: "Привет" },
@@ -57,6 +58,8 @@ const store = {
     },
   },
 
+  _renderDOM() {},
+
   getState() {
     return this._state;
   },
@@ -65,50 +68,12 @@ const store = {
   },
 
   dispath(action) {
-    if (action.type === "ADD-MESSAGE") {
-      this._thisId++;
-      this._state.messagesPage.messages.push({
-        id: this._thisId,
-        text: this._state.textareaVal,
-      });
-      this._state.textareaVal = "";
-      this._renderDOM(this._state);
-    } else if (action.type === "ADD-POST") {
-      this._thisId++;
-      const now = new Date().toLocaleString();
-      const date = now;
-      const newPost = {
-        id: this._thisId,
-        text: this._state.textareaVal,
-        date: date,
-      };
-      this._state.profile.posts.push(newPost);
-      this._state.textareaVal = "";
-      this._renderDOM(this._state);
-    } else if (action.type === "CHANGE-TEXTAREA") {
-      this._state.textareaVal = action.text;
-      this._renderDOM(this._state);
-    }
+    this._state.profile = profileReducer(this._state.profile, action);
+    this._state.messagesPage = messageReducer(this._state.messagesPage, action);
+    this._state.navbar = navbarReducer(this._state.navbar, action);
+
+    this._renderDOM(this._state);
   },
 };
 
 export default store;
-
-//
-//
-//
-const CHANGE_TEXTAREA = "CHANGE-TEXTAREA";
-const ADD_POST = "ADD-POST";
-const ADD_MESSAGE = "ADD-MESSAGE";
-
-export const changeMessageActionCreator = (text) => {
-  return { type: CHANGE_TEXTAREA, text: text };
-};
-
-export const addPostActionCreator = () => {
-  return { type: ADD_POST };
-};
-
-export const addMessageActionCreator = () => {
-  return { type: ADD_MESSAGE };
-};

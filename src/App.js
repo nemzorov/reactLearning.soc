@@ -25,7 +25,7 @@ function App(props) {
                   <Profile
                     data={props.state.profile}
                     dispath={props.dispath}
-                    textareaVal={props.state.textareaVal}
+                    textareaVal={props.state.profile.textareaVal}
                   />
                 }
               />
@@ -35,7 +35,7 @@ function App(props) {
                   <Messages
                     data={props.state.messagesPage}
                     dispath={props.dispath}
-                    textareaVal={props.state.textareaVal}
+                    textareaVal={props.state.messagesPage.textareaVal}
                   />
                 }
               />
