@@ -6,12 +6,12 @@ const Send = (props) => {
     const newMessage = React.createRef();
 
     const addMessage = () => {
-        props.dispath(props.actionAdd());
+        props.dispatch(props.actionAdd());
     }
 
     const changeMessage = () => {
         const text = newMessage.current.value;
-        props.dispath(props.changeActionCreator(text));
+        props.dispatch(props.changeActionCreator(text));
     }
 
 

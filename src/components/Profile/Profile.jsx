@@ -22,7 +22,7 @@ const Profile = (props) => {
 
                 <div className={style.wall}>
 
-                    <Send changeActionCreator={changePostActionCreator} actionAdd={addPostActionCreator} textareaVal={props.textareaVal} dispath={props.dispath} btnName="Опубликовать" style={style.send} />
+                    <Send changeActionCreator={changePostActionCreator} actionAdd={addPostActionCreator} textareaVal={props.textareaVal} dispatch={props.dispatch} btnName="Опубликовать" style={style.send} />
 
                     <div className={style.posts}>
                         {posts.map(post => <Post style={style.post} text={post.text} date={post.date} />)}

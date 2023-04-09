@@ -20,7 +20,7 @@ const Messages = (props) => {
                     {props.data.messages.map(message => <Message key={message.id} className={`${style.message} ${message.my ? style.my : ''}`} message={message.text} />)}
                 </ul>
 
-                <Send changeActionCreator={changeMessageActionCreator} actionAdd={addMessageActionCreator} textareaVal={props.textareaVal} dispath={props.dispath} btnName="Отправить" style={style.send} />
+                <Send changeActionCreator={changeMessageActionCreator} actionAdd={addMessageActionCreator} textareaVal={props.textareaVal} dispatch={props.dispatch} btnName="Отправить" style={style.send} />
             </div>
         </div>
     )

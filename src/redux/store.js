@@ -67,7 +67,7 @@ const store = {
     this._renderDOM = observer;
   },
 
-  dispath(action) {
+  dispatch(action) {
     this._state.profile = profileReducer(this._state.profile, action);
     this._state.messagesPage = messageReducer(this._state.messagesPage, action);
     this._state.navbar = navbarReducer(this._state.navbar, action);

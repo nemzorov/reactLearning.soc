@@ -1,4 +1,4 @@
-import store from "./redux/state";
+import store from "./redux/store-redux";
 import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 export const renderDOM = () => {
   root.render(
     <React.StrictMode>
-      <App state={store.getState()} dispath={store.dispath.bind(store)} />
+      <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
     </React.StrictMode>
   );
 };

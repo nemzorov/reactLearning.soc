@@ -15,7 +15,7 @@ function App(props) {
       <div className="container">
         <div className="App">
           <Header />
-          <Navbar data={props.state.navbar} />
+          <Navbar />
           <div className="wrapp">
             <Routes>
               <Route path="/" element={<Main />} />
@@ -24,7 +24,7 @@ function App(props) {
                 element={
                   <Profile
                     data={props.state.profile}
-                    dispath={props.dispath}
+                    dispatch={props.dispatch}
                     textareaVal={props.state.profile.textareaVal}
                   />
                 }
@@ -34,7 +34,7 @@ function App(props) {
                 element={
                   <Messages
                     data={props.state.messagesPage}
-                    dispath={props.dispath}
+                    dispatch={props.dispatch}
                     textareaVal={props.state.messagesPage.textareaVal}
                   />
                 }
