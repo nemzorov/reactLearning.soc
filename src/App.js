@@ -9,7 +9,7 @@ import Settings from "./components/Settings/Settings";
 import Main from "./components/Main/Main";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App(props) {
+function App() {
   return (
     <BrowserRouter>
       <div className="container">
@@ -19,26 +19,8 @@ function App(props) {
           <div className="wrapp">
             <Routes>
               <Route path="/" element={<Main />} />
-              <Route
-                path="/profile"
-                element={
-                  <Profile
-                    data={props.state.profile}
-                    dispatch={props.dispatch}
-                    textareaVal={props.state.profile.textareaVal}
-                  />
-                }
-              />
-              <Route
-                path="/message/*"
-                element={
-                  <Messages
-                    data={props.state.messagesPage}
-                    dispatch={props.dispatch}
-                    textareaVal={props.state.messagesPage.textareaVal}
-                  />
-                }
-              />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/message/*" element={<Messages />} />
               <Route path="/news" element={<News />} />
               <Route path="/music" element={<Music />} />
               <Route path="/settings" element={<Settings />} />

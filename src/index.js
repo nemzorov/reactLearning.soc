@@ -3,13 +3,16 @@ import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import StoreContext from "./store-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 export const renderDOM = () => {
   root.render(
     <React.StrictMode>
-      <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
+      <StoreContext.Provider value={store}>
+        <App />
+      </StoreContext.Provider>
     </React.StrictMode>
   );
 };

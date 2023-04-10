@@ -14,9 +14,6 @@ const Send = (props) => {
         props.dispatch(props.changeActionCreator(text));
     }
 
-
-
-
     return (
         <div className={props.style}>
             <textarea className={style.textarea} onChange={changeMessage} ref={newMessage} value={props.textareaVal} />
